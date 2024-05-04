@@ -14,6 +14,8 @@ public interface IGestion {
 	public void addOffre(Offre o);
 	public void deleteOffre(int id);
 	public Offre getOffreById(int id);
+	public List<Offre> getAllOffresByEntreprise(int id_entreprise);
+	
 	
 	public List<Entreprise> getAllEntreprises();
 	public void addEntreprise(Entreprise e);
@@ -23,6 +25,7 @@ public interface IGestion {
 	public List<Candidature> getAllCandidaturesByOffre(int id_offre);
 	public void addCandidature(Candidature c);
 	public void deleteCandidature(int id);
+	public Candidature getCandidatureById(int id);
 	
 	public List<Utilisateur> getAllUtilisateurs();
 	public void addUtilisateur(Utilisateur u);

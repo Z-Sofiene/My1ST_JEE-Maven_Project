@@ -49,6 +49,10 @@ public class PostPostuler extends HttpServlet {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		}
 		
+		if(!u.getRole().equals("user")) {
+			request.getRequestDispatcher("PreOffre").forward(request, response);
+		}
+		
 		int id= Integer.parseInt(request.getParameter("offre"));
 		String date1=request.getParameter("diplome");
 		int nbre=Integer.parseInt(request.getParameter("annees"));

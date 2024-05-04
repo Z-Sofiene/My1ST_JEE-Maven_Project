@@ -2,6 +2,10 @@ package tn.essat.controller;
 
 import java.io.IOException;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import tn.essat.dao.GestionImp;
 import tn.essat.dao.IGestion;
+import tn.essat.model.Entreprise;
 import tn.essat.model.Utilisateur;
 
 /**
@@ -40,9 +45,30 @@ public class DeleteEntreprise extends HttpServlet {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		}
 		
+		if(!u.getRole().equals("admin")) {
+			request.getRequestDispatcher("PreOffre").forward(request, response);
+		}
+		
 		IGestion dao= new GestionImp();
 		
 		int idDel=Integer.parseInt(request.getParameter("idDel"));
+		/*
+		List<Offre> ListOffre = dao.getAllOffresByEntreprise(idDel);
+		for(Offre o:ListOffre){
+			List<Candidature> ListC = dao.getAllCandidaturesByOffre(o.getId());
+			for (Candidature c:ListC) {
+				dao.deleteCandidature(c.getId());
+			}
+			dao.deleteOffre(o.getId());
+		}
+		/// we can change all of this by adding one line to @ManyToOne in class:
+		 * Offre and Candidature
+		 * 		@ManyToOne(cascade = CascadeType.REMOVE)
+				@JoinColumn(name = "entreprise_id", foreignKey = @ForeignKey(name = "fk_offre_entreprise", foreignKeyDefinition = "FOREIGN KEY (entreprise_id) REFERENCES Entreprise(id) ON DELETE CASCADE"))
+				private Entreprise entreprise;
+
+	*/
+		
 		dao.deleteEntreprise(idDel);
 		
 		request.getRequestDispatcher("PreEntreprise").forward(request, response);

@@ -1,11 +1,15 @@
 package tn.essat.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
 
 @Entity
 public class Offre {
@@ -16,10 +20,10 @@ public class Offre {
 	private String date_embauche;
 	private String salaire;
 	
-	@ManyToOne
-	@JoinColumn(name = "entreprise_id")
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "entreprise_id", foreignKey = @ForeignKey(name = "fk_offre_entreprise", foreignKeyDefinition = "FOREIGN KEY (entreprise_id) REFERENCES Entreprise(id) ON DELETE CASCADE"))
 	private Entreprise entreprise;
-	
+
 	
 	public Offre(int id, String poste, String date_embauche, String salaire, Entreprise entreprise) {
 		super();

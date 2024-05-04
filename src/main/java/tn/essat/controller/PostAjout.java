@@ -49,6 +49,10 @@ public class PostAjout extends HttpServlet {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		}
 		
+		if(!u.getRole().equals("admin")) {
+			request.getRequestDispatcher("PreOffre").forward(request, response);
+		}
+		
 		int idEnt = Integer.parseInt(request.getParameter("entreprise"));
 		String poste = request.getParameter("poste");
 		String salaire = request.getParameter("salaire");

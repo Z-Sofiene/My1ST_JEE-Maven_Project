@@ -146,6 +146,16 @@ public class GestionImp implements IGestion {
 		}
 		return u;
 	}
+	@Override
+	public Candidature getCandidatureById(int id) {
+		return session.load(Candidature.class, id);
+	}
+	@Override
+	public List<Offre> getAllOffresByEntreprise(int id_entreprise) {
+		Query<Offre> queryOffre = session.createQuery("Select o from Offre o where o.entreprise.id =?1");
+		queryOffre.setParameter(1, id_entreprise);
+		return queryOffre.getResultList();
+	}
 
 
 

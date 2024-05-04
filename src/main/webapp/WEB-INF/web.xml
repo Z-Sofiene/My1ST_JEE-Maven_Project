@@ -70,6 +70,18 @@
   	<description></description>
   	<servlet-class>tn.essat.controller.PostAjout</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PostAjoutEntreprise</servlet-name>
+  	<display-name>PostAjoutEntreprise</display-name>
+  	<description></description>
+  	<servlet-class>tn.essat.controller.PostAjoutEntreprise</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PreAjoutEntreprise</servlet-name>
+  	<display-name>PreAjoutEntreprise</display-name>
+  	<description></description>
+  	<servlet-class>tn.essat.controller.PreAjoutEntreprise</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Verif</servlet-name>
   	<url-pattern>/Verif</url-pattern>
@@ -113,5 +125,13 @@
   <servlet-mapping>
   	<servlet-name>PostAjout</servlet-name>
   	<url-pattern>/PostAjout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PostAjoutEntreprise</servlet-name>
+  	<url-pattern>/PostAjoutEntreprise</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PreAjoutEntreprise</servlet-name>
+  	<url-pattern>/PreAjoutEntreprise</url-pattern>
   </servlet-mapping>
 </web-app>

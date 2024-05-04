@@ -42,23 +42,17 @@ public class DeleteCandidature extends HttpServlet {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		}
 		
+		if(!u.getRole().equals("admin")) {
+			request.getRequestDispatcher("PreOffre").forward(request, response);
+		}
+		
 		IGestion dao= new GestionImp();
 		
 		int idDel=Integer.parseInt(request.getParameter("idDel"));
-		int id = Integer.parseInt(request.getParameter("id"));
+		Offre o =dao.getCandidatureById(idDel).getOffre();
 		dao.deleteCandidature(idDel);
 		
-		/* methode 2 de supprime sans utiliser la methode 1 : 
-		 * candidats_offre.jsp -> DeleteCandidature.java -> PreCandidature.java -> candidats_offre.jsp
-		request.setAttribute("id", id);
-		request.getRequestDispatcher("PreCandidature").forward(request, response);
-		*/
-		
-		// 3eme Methode delete et redirection vers la page jsp
-		
-		Offre o = dao.getOffreById(id);
-		List<Candidature> c = dao.getAllCandidaturesByOffre(id);
-		
+		List<Candidature> c = dao.getAllCandidaturesByOffre(o.getId());
 		request.setAttribute("selectedOffre", o);
 		request.setAttribute("listC", c);
 		

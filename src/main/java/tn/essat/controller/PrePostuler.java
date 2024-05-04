@@ -42,6 +42,10 @@ public class PrePostuler extends HttpServlet {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		}
 		
+		if(!u.getRole().equals("user")) {
+			request.getRequestDispatcher("PreOffre").forward(request, response);
+		}
+		
 		IGestion dao = new GestionImp();
 		List <Offre> liste = dao.getAllOffres();
 		request.setAttribute("listOffre", liste);

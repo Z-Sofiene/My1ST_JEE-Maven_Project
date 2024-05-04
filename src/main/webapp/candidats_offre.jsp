@@ -48,7 +48,7 @@
 									<td> ${c.dernier_poste} </td> 
 									<td> ${c.nbre_annee} ans</td> 															
 									<td>
-									<a href="DeleteCandidature?idDel=${c.id}&id=${selectedOffre.id}" class="btn btn-danger">DELETE</a>								
+									<a href="DeleteCandidature?idDel=${c.id}" class="btn btn-danger">Delete</a>							
 									</td>								
                            		</tr>
                             </c:forEach>						

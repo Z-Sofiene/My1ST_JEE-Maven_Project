@@ -20,27 +20,18 @@
 
     <div class="row" style="margin-top:10px;">
         
-		<div class="col-3">
-		    <div class="list-group">
-		        <a href="PreOffre" class="list-group-item list-group-item-action">
-		            <span class="fa fa-th-large"></span>
-		            <b>Liste des Offres d'emploi</b>
-		        </a>
-		
-		        <a href="PreEntreprise" class="list-group-item list-group-item-action active">
-		            <span class="fa fa-th-large"></span>
-		            <b>Liste des Entreprises</b>
-		        </a>
-		    </div>
-		</div>
+		<%@include file="gauche2.jsp" %>
 
         <div class="col-9" >            
                 <div class="card text-white">
                     <div class="card-header bg-success"> <h5>Liste des entreprises </h5></div>
 					<div class="card-body">
-					 
-					
-					 
+						<c:if test="${usr.role==\"user\" }">
+					            <a href="PrePostuler" class="btn btn-primary mb-3">Postuler pour une offre d'emploi</a>
+					    </c:if>
+					    <c:if test="${usr.role==\"admin\" }">
+								<a href="PreAjoutEntreprise" class="btn btn-danger mb-3">Ajouter une Entreprise</a>
+						</c:if>  					
                     <table class="table table-hover table-bordered">
                         <thead class="thead-light">
                           <tr><th>Titre Entreprise</th><th>Domaine</th><th>Ville</th> <th></th>

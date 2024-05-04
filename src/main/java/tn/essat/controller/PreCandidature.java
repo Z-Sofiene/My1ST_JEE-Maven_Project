@@ -43,13 +43,12 @@ public class PreCandidature extends HttpServlet {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		}
 		
+		if(!u.getRole().equals("admin")) {
+			request.getRequestDispatcher("PreOffre").forward(request, response);
+		}
+		
 		IGestion dao= new GestionImp();
-		/* methode 1 to supprime un condidature relation : candidats_offre.jsp <-> PreCandidature.java
-		String idDeleted = request.getParameter("idDel");
-		if (idDeleted != null) {
-			int idDel=Integer.parseInt(idDeleted);
-			dao.deleteCandidature(idDeleted);
-		}*/
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		Offre o = dao.getOffreById(id);
 		List<Candidature> c = dao.getAllCandidaturesByOffre(id);

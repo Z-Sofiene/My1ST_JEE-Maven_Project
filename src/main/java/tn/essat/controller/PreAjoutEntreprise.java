@@ -1,7 +1,6 @@
 package tn.essat.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,21 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import tn.essat.dao.GestionImp;
-import tn.essat.dao.IGestion;
-import tn.essat.model.Entreprise;
 import tn.essat.model.Utilisateur;
 
 /**
- * Servlet implementation class PreAjout
+ * Servlet implementation class PreAjoutEntreprise
  */
-public class PreAjout extends HttpServlet {
+public class PreAjoutEntreprise extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PreAjout() {
+    public PreAjoutEntreprise() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,10 +42,7 @@ public class PreAjout extends HttpServlet {
 			request.getRequestDispatcher("PreOffre").forward(request, response);
 		}
 		
-		IGestion dao=new GestionImp();
-		List <Entreprise> e=dao.getAllEntreprises();
-		request.setAttribute("ListEnt", e);
-		request.getRequestDispatcher("ajout_offre.jsp").forward(request,response);
+		request.getRequestDispatcher("ajout_entreprise.jsp").forward(request,response);
 	}
 
 	/**

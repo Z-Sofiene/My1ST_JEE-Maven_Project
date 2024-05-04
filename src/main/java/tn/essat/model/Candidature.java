@@ -1,6 +1,8 @@
 package tn.essat.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,8 +16,9 @@ public class Candidature {
 	private String date_diplome;	
 	private String dernier_poste;
 	private int nbre_annee;
-	@ManyToOne
-	@JoinColumn(name = "offre_id")
+	
+	@ManyToOne( cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "offre_id", foreignKey = @ForeignKey(name="fk_candidature_offre", foreignKeyDefinition = "FOREIGN KEY (offre_id) REFERENCES Offre(id) ON DELETE CASCADE"))
 	private Offre offre;
 	@ManyToOne
 	@JoinColumn(name = "user_id")
